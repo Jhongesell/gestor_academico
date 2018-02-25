@@ -15,6 +15,24 @@
               </tree>
           </field>
       </record>
+      <!--VISTA TREE : ESTUDIANTE-->
+      <record id="ga_view_form_estudiante" model="ir.ui.view">
+          <field name="name">ga.view.form.estudiante</field>
+          <field name="model">ga.estudiante</field>
+          <field name="arch" type="xml">
+              <form>
+                  <field name="name"/>
+                  <field name="edad"/>
+                  <field name="sexo"/>
+                  <field name="fec_nac"/>
+                  <field name="estatura"/>
+                  <field name="curso_ids"/>
+              </form>
+          </field>
+      </record>
+      <!--VISTA FORM: ESTUDIANTE : BEGIN-->
+
+      <!--VISTA FORM: ESTUDIANTE : END-->
 
       <!--ACTION TREE ESTUDIANTE-->
       <record id="ga_action_view_tree_estudiante" model="ir.actions.act_window">
