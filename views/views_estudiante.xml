@@ -41,11 +41,13 @@
                           <field name="sexo"/>
                           <field name="fec_nac"/>
                           <field name="estatura"/>
+                          <field name="pp"/>
                           <field name="curso_ids"/>
                           <field name="evaluacion_ids" mode="tree">
-                              <tree>
+                              <tree editable="top">
                                   <field name="name"/>
                                   <field name="curso_id"/>
+                                  <field name="nota"/>
                               </tree>
                           </field>
                       </group>

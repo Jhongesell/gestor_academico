@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class departamento(models.Model):
     _name="departamento"
@@ -25,8 +26,15 @@ class estudiante(models.Model):
 
     departamento = fields.Selection(selection=_get_selection)
 
-    
+    @api.one
+    @api.depends("evaluacion_ids.nota")
     def _compute_pp(self):
+        suma=0
+        length=len(self.evaluacion_ids)
+        for evaluacion in self.evaluacion_ids:
+            suma=suma+evaluacion.nota
+        promedio=suma/float(length)
+        self.pp=promedio
 
     pp = fields.Float(string= "Promedio Ponderado",compute="_compute_pp")
 
@@ -46,6 +54,12 @@ class evaluacion(models.Model):
     curso_id = fields.Many2one("ga.curso",string="Curso")
     estudiante_id = fields.Many2one("ga.estudiante",string="Estudiante")
     nota = fields.Integer("Nota")
+
+    @api.constrains("nota")
+    def validar_nota(self):
+        if self.nota<0 or self.nota>20:
+            raise ValidationError("La nota debe estar comprendida entre 0 y 20")
+
 
 class profesor(models.Model):
     _name = "ga.profesor"
