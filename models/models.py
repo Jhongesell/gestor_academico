@@ -9,7 +9,7 @@ class estudiante(models.Model):
     estatura = fields.Float(string="Estatura")
     descripcion = fields.Text(string="Descripción")
     sexo = fields.Selection(selection=[('F',"Femenino"),("M","Masculino")],string="Sexo")
-    curso_ids = fields.Many2many("ga.curso")
+    curso_ids = fields.Many2many("ga.curso",string="Cursos")
     evaluacion_ids = fields.One2many("ga.evaluacion","estudiante_id",string="Evaluaciones")
 
 class curso(models.Model):
@@ -17,15 +17,15 @@ class curso(models.Model):
     name = fields.Char("Nombre")
     descripcion = fields.Text("Descripción")
     #Many2many(<nombre_clase>)
-    estudiante_ids = fields.Many2many("ga.estudiante")
-    evaluacion_ids = fields.One2many("ga.evaluacion","curso_id")
-    profesor_id = fields.Many2one("ga.profesor")
+    estudiante_ids = fields.Many2many("ga.estudiante",string="Estudiantes")
+    evaluacion_ids = fields.One2many("ga.evaluacion","curso_id",string="Evaluaciones",help="Aquí seañaden las evaluaciones")
+    profesor_id = fields.Many2one("ga.profesor",string="Profesor")
 
 class evaluacion(models.Model):
     _name = "ga.evaluacion"
     name = fields.Char("Nombre")
-    curso_id = fields.Many2one("ga.curso")
-    estudiante_id = fields.Many2one("ga.estudiante")
+    curso_id = fields.Many2one("ga.curso",string="Curso")
+    estudiante_id = fields.Many2one("ga.estudiante",string="Estudiante")
 
 class profesor(models.Model):
     _name = "ga.profesor"
