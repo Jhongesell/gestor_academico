@@ -1,0 +1,33 @@
+<odoo>
+  <data>
+
+      <!--VISTA TREE : ESTUDIANTE-->
+      <record id="ga_view_tree_estudiante" model="ir.ui.view">
+          <field name="name">ga.view.tree.estudiante</field>
+          <field name="model">ga.estudiante</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="name"/>
+                  <field name="edad"/>
+                  <field name="sexo"/>
+                  <field name="fec_nac"/>
+                  <field name="estatura"/>
+              </tree>
+          </field>
+      </record>
+
+      <!--ACTION TREE ESTUDIANTE-->
+      <record id="ga_action_view_tree_estudiante" model="ir.actions.act_window">
+          <field name="name">Estudiantes</field>
+          <field name="res_model">ga.estudiante</field>
+          <field name="view_id" ref="ga_view_tree_estudiante"/>
+      </record>
+
+      <!--MENU ESTUDIANTE-->
+      <menuitem id="ga_menu_estudiante"
+                name="Estudiantes"
+                parent=""
+                action="ga_action_view_tree_estudiante"/>
+
+  </data>
+</odoo>
