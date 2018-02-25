@@ -21,12 +21,16 @@
           <field name="model">ga.estudiante</field>
           <field name="arch" type="xml">
               <form>
-                  <field name="name"/>
-                  <field name="edad"/>
-                  <field name="sexo"/>
-                  <field name="fec_nac"/>
-                  <field name="estatura"/>
-                  <field name="curso_ids"/>
+                  <sheet>
+                      <group>
+                          <field name="name"/>
+                          <field name="edad"/>
+                          <field name="sexo"/>
+                          <field name="fec_nac"/>
+                          <field name="estatura"/>
+                          <field name="curso_ids"/>
+                      </group>
+                  </sheet>
               </form>
           </field>
       </record>
