@@ -25,6 +25,11 @@ class estudiante(models.Model):
 
     departamento = fields.Selection(selection=_get_selection)
 
+    
+    def _compute_pp(self):
+
+    pp = fields.Float(string= "Promedio Ponderado",compute="_compute_pp")
+
 class curso(models.Model):
     _name="ga.curso"
     name = fields.Char("Nombre")
@@ -40,6 +45,7 @@ class evaluacion(models.Model):
     name = fields.Char("Nombre")
     curso_id = fields.Many2one("ga.curso",string="Curso")
     estudiante_id = fields.Many2one("ga.estudiante",string="Estudiante")
+    nota = fields.Integer("Nota")
 
 class profesor(models.Model):
     _name = "ga.profesor"
