@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
 
+class departamento(models.Model):
+    _name="departamento"
+    name=fields.Char("Nombre")
+
 class estudiante(models.Model):
     _name = "ga.estudiante"
     name = fields.Char(string="Nombre",required=True)
@@ -12,6 +16,15 @@ class estudiante(models.Model):
     curso_ids = fields.Many2many("ga.curso",string="Cursos")
     evaluacion_ids = fields.One2many("ga.evaluacion","estudiante_id",string="Evaluaciones")
 
+    def _get_selection(self):
+        objects_departamento=self.env["departamento"].search([])
+        lista_departamento = []
+        for dep in objects_departamento:
+            lista_departamento.append((dep.name ,dep.name ))
+        return lista_departamento
+
+    departamento = fields.Selection(selection=_get_selection)
+
 class curso(models.Model):
     _name="ga.curso"
     name = fields.Char("Nombre")
@@ -20,6 +33,7 @@ class curso(models.Model):
     estudiante_ids = fields.Many2many("ga.estudiante",string="Estudiantes")
     evaluacion_ids = fields.One2many("ga.evaluacion","curso_id",string="Evaluaciones",help="Aquí seañaden las evaluaciones")
     profesor_id = fields.Many2one("ga.profesor",string="Profesor")
+
 
 class evaluacion(models.Model):
     _name = "ga.evaluacion"

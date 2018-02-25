@@ -37,6 +37,7 @@
                       <group>
                           <field name="name"/>
                           <field name="edad"/>
+                          <field name="departamento"/>
                           <field name="sexo"/>
                           <field name="fec_nac"/>
                           <field name="estatura"/>

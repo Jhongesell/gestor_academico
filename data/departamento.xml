@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record model="departamento" id="departamento_1">
+            <field name="name">Lima</field>
+        </record>
+        <record model="departamento" id="departamento_2">
+            <field name="name">Trujillo</field>
+        </record>
+        <record model="departamento" id="departamento_3">
+            <field name="name">Arequipa</field>
+        </record>
+        <record model="departamento" id="departamento_4">
+            <field name="name">Amazonas</field>
+        </record>
+    </data>
+</odoo>
