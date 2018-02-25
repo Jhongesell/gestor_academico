@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "Gestor Academico",
 
@@ -24,7 +23,9 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/views.xml',
+
+        'views/views_estudiante.xml',
+        'views/views_curso.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
@@ -32,3 +33,4 @@
         'demo/demo.xml',
     ],
 }
+# -*- coding: utf-8 -*-

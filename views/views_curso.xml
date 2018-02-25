@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="ga_view_tree_curso">
+            <field name="name">ga.view.tree.curso</field>
+            <field name="model">ga.curso</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="descripcion"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ga_view_form_curso">
+            <field name="name">ga.view.form.curso</field>
+            <field name="model">ga.curso</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Datos del Curso">
+                            <field name="name"/>
+                            <field name="descripcion"/>
+                            <field name="profesor_id"/>
+                            <field name="estudiante_ids" mode="tree" widget="one2many_list">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="edad"/>
+                                    <field name="sexo"/>
+                                    <field name="evaluacion_ids" widget="many2many_tags"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="ga_action_view_curso">
+            <field name="name">Cursos</field>
+            <field name="res_model">ga.curso</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_curso"
+                  name="Menú Curso"
+                  parent="ga_menu_gestor_academico"
+                  action="ga_action_view_curso"/>
+    </data>
+</odoo>
