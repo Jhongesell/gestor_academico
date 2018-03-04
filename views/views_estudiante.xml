@@ -67,9 +67,13 @@
       </record>
 
       <!--MENU ESTUDIANTE-->
+      <menuitem id="ga_super_menu_gestor_academico"
+                name="Menú Gestor Academico"
+                parent=""/>
+
       <menuitem id="ga_menu_gestor_academico"
                 name="Gestor Academico"
-                parent=""/>
+                parent="ga_super_menu_gestor_academico"/>
 
       <menuitem id="ga_menu_estudiante"
                 name="Menú Estudiantes"

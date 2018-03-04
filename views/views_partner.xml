@@ -2,7 +2,7 @@
 <odoo>
     <data>
 
-
+        <!--VIEW RESPARTER BEGIN-->
         <record model="ir.ui.view" id="ga_view_tree_res_partner">
             <field name="name">ga.view.tree.res.partner</field>
             <field name="model">res.partner</field>
@@ -13,12 +13,51 @@
                     <field name="sexo"/>
                 </xpath>
             </field>
+
         </record>
+
+        <!--VIEW RESPARTER BEGIN-->
+
+        <!--VIEW RESPARTER BEGIN-->
+        <record model="ir.ui.view" id="ga_view_form_res_partner">
+            <field name="name">ga.view.form.res.partner</field>
+            <field name="model">res.partner</field>
+            <!--Herecia de la vista-->
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales_purchases']" position="after">
+                    <page string="Estudiante">
+                        <group>
+                            <field name="estudiante"/>
+                          <field name="name"/>
+                          <field name="edad"/>
+                          <field name="departamento"/>
+                          <field name="sexo"/>
+                          <field name="fec_nac"/>
+                          <field name="estatura"/>
+                          <field name="pp"/>
+                          <field name="curso_ids"/>
+                          <field name="evaluacion_ids" mode="tree">
+                              <tree editable="top">
+                                  <field name="name"/>
+                                  <field name="curso_id"/>
+                                  <field name="nota"/>
+                              </tree>
+                          </field>
+                      </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <!--VIEW RESPARTER BEGIN-->
 
         <record id="ga_action_view_tree_res_partner" model="ir.actions.act_window">
             <field name="name">Estudiantes</field>
             <field name="res_model">res.partner</field>
             <field name="view_mode">tree,form</field>
+            <field name="domain">
+                [('estudiante','=',False)]
+            </field>
         </record>
 
         <menuitem id="menu_res_partner"
