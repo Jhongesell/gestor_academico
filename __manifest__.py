@@ -27,7 +27,8 @@
         'views/views_estudiante.xml',
         'views/views_curso.xml',
         'views/templates.xml',
-        'views/views_partner.xml'
+        'views/views_partner.xml',
+        'data/groups.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

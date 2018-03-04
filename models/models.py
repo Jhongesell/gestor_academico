@@ -33,8 +33,10 @@ class estudiante(models.Model):
         length=len(self.evaluacion_ids)
         for evaluacion in self.evaluacion_ids:
             suma=suma+evaluacion.nota
-        promedio=suma/float(length)
-        self.pp=promedio
+        if length!=0:
+            promedio= suma/float(length)
+        else:
+            promedio=0
 
     pp = fields.Float(string= "Promedio Ponderado",compute="_compute_pp")
 

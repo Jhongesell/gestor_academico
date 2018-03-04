@@ -1,5 +1,5 @@
 <odoo>
-    <data>
+    <data >
 
         <record model="ir.ui.view" id="ga_view_tree_curso">
             <field name="name">ga.view.tree.curso</field>
@@ -46,5 +46,11 @@
                   name="Menú Curso"
                   parent="ga_menu_gestor_academico"
                   action="ga_action_view_curso"/>
+
+
+
+
+
+
     </data>
 </odoo>

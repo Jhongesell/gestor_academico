@@ -25,11 +25,17 @@
             <!--Herecia de la vista-->
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
+                <xpath expr="//notebook/page" position="replace">
+
+                </xpath>
+                <xpath expr="//page[@name='internal_notes']" position="replace">
+
+                </xpath>
                 <xpath expr="//page[@name='sales_purchases']" position="after">
                     <page string="Estudiante">
                         <group>
-                            <field name="estudiante"/>
-                          <field name="name"/>
+                            <field name="profesor"/>
+                          <field name="estudiante"/>
                           <field name="edad"/>
                           <field name="departamento"/>
                           <field name="sexo"/>
@@ -51,18 +57,33 @@
         </record>
         <!--VIEW RESPARTER BEGIN-->
 
-        <record id="ga_action_view_tree_res_partner" model="ir.actions.act_window">
+        <record id="ga_action_view_tree_res_partner_estudiante" model="ir.actions.act_window">
             <field name="name">Estudiantes</field>
             <field name="res_model">res.partner</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">
-                [('estudiante','=',False)]
+                [('estudiante','=',True)]
             </field>
         </record>
 
-        <menuitem id="menu_res_partner"
+        <record id="ga_action_view_tree_res_partner_profesor" model="ir.actions.act_window">
+            <field name="name">Profesores</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">
+                [('profesor','=',True)]
+            </field>
+        </record>
+
+
+        <menuitem id="menu_res_partner_estudiante"
                   name="Estudiantes"
                   parent="ga_menu_gestor_academico"
-                  action="ga_action_view_tree_res_partner"/>
+                  action="ga_action_view_tree_res_partner_estudiante"/>
+
+        <menuitem id="menu_res_partner_profesor"
+                  name="Profesor"
+                  parent="ga_menu_gestor_academico"
+                  action="ga_action_view_tree_res_partner_profesor"/>
     </data>
 </odoo>

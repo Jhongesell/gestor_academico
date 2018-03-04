@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <record id="ga_module_category_gestor_academico" model="ir.module.category">
+            <field name="name">Gestor Académico</field>
+        </record>
+
+        <record id="ga_res_groups_profesor" model="res.groups">
+            <field name="name">Profesor</field>
+            <field name="category_id" ref="ga_module_category_gestor_academico"/>
+            <field name="menu_access" eval="[
+                                               (4,ref('menu_curso')),
+                                               (4,ref('menu_res_partner_estudiante'))
+                                              ]" />
+        </record>
+
+        <record id="ga_res_groups_administracion" model="res.groups">
+            <field name="name">Administración</field>
+            <field name="category_id" ref="ga_module_category_gestor_academico"/>
+            <field name="menu_access" eval="[
+                                               (4,ref('ga_menu_estudiante')),
+                                               (4,ref('menu_res_partner_profesor'))
+                                              ]" />
+        </record>
+
+        <record id="ga_res_groups_director" model="res.groups">
+            <field name="name">Director</field>
+            <field name="category_id" ref="ga_module_category_gestor_academico"/>
+        </record>
+    </data>
+</odoo>
