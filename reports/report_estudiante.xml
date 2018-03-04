@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <template id="report_estudiante">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <h2>Reporte de Estudiante</h2>
+                            <p>Nombre<span t-field="o.name"/> </p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <report
+                id="ga_report_estudiante"
+                model="res.partner"
+                string="Reporte Estuduante"
+                report_type="qweb-pdf"
+                name="gestor_academico.report_estudiante"
+                file="gestor_academico.report_estudiante"/>
+
+    </data>
+</odoo>

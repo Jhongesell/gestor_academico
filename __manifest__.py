@@ -28,7 +28,8 @@
         'views/views_curso.xml',
         'views/templates.xml',
         'views/views_partner.xml',
-        'data/groups.xml'
+        'data/groups.xml',
+        'reports/report_estudiante.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

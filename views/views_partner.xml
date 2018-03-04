@@ -25,13 +25,7 @@
             <!--Herecia de la vista-->
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//notebook/page" position="replace">
-
-                </xpath>
-                <xpath expr="//page[@name='internal_notes']" position="replace">
-
-                </xpath>
-                <xpath expr="//page[@name='sales_purchases']" position="after">
+                                <xpath expr="//page[@name='sales_purchases']" position="after">
                     <page string="Estudiante">
                         <group>
                             <field name="profesor"/>
