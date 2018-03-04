@@ -1,0 +1,29 @@
+
+<odoo>
+    <data>
+
+
+        <record model="ir.ui.view" id="ga_view_tree_res_partner">
+            <field name="name">ga.view.tree.res.partner</field>
+            <field name="model">res.partner</field>
+            <!--Herecia de la vista-->
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='email']" position="replace">
+                    <field name="sexo"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="ga_action_view_tree_res_partner" model="ir.actions.act_window">
+            <field name="name">Estudiantes</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_res_partner"
+                  name="Estudiantes"
+                  parent="ga_menu_gestor_academico"
+                  action="ga_action_view_tree_res_partner"/>
+    </data>
+</odoo>

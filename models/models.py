@@ -65,3 +65,44 @@ class profesor(models.Model):
     _name = "ga.profesor"
     name = fields.Char("Nombre")
     curso_ids = fields.One2many("ga.curso","profesor_id")
+
+
+
+class respartner(models.Model):
+    _inherit = "res.partner"
+    dni=fields.Char("DNI")
+    edad = fields.Integer(string="Edad",required=True)
+    fec_nac = fields.Date(string="Fecha de Nacimiento",required=True)
+    estatura = fields.Float(string="Estatura")
+    descripcion = fields.Text(string="Descripción")
+    sexo = fields.Selection(selection=[('F',"Femenino"),("M","Masculino")],string="Sexo")
+    curso_ids = fields.Many2many("ga.curso",string="Cursos")
+    evaluacion_ids = fields.One2many("ga.evaluacion","estudiante_id",string="Evaluaciones")
+
+    def _get_selection(self):
+        objects_departamento=self.env["departamento"].search([])
+        lista_departamento = []
+        for dep in objects_departamento:
+            lista_departamento.append((dep.name ,dep.name ))
+        return lista_departamento
+
+    departamento = fields.Selection(selection=_get_selection)
+
+    @api.one
+    @api.depends("evaluacion_ids.nota")
+    def _compute_pp(self):
+        suma=0
+        length=len(self.evaluacion_ids)
+        for evaluacion in self.evaluacion_ids:
+            suma=suma+evaluacion.nota
+        promedio=suma/float(length)
+        self.pp=promedio
+
+    pp = fields.Float(string= "Promedio Ponderado",compute="_compute_pp")
+
+
+
+
+
+
+
